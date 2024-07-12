@@ -1,0 +1,17 @@
+name: Build (FEATURE)
+
+on:
+  push:
+    branches:
+      - feature/*
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run a one-line script
+        run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
